@@ -13,7 +13,7 @@
 // we wan to listen to the event
 
 const secretNumber = Math.trunc(Math.random() * 20) + 1;
-document.querySelector('.number').textContent = secretNumber;
+
 let score = 20;
 
 document.querySelector('.check').addEventListener
@@ -22,6 +22,8 @@ document.querySelector('.check').addEventListener
             ('.guess').value);
         console.log(typeof guess);
 
+
+        // When player wins
         if (!guess) {
             document.querySelector('.message').textContent
                 = 'No Number';
@@ -29,6 +31,13 @@ document.querySelector('.check').addEventListener
         } else if (guess === secretNumber) {
             document.querySelector('.message')
                 .textContent = 'correct Number';
+            document.querySelector('.number').textContent = secretNumber;
+
+            document.querySelector('body').style.
+                backgroundColor = '#60b347';
+
+            document.querySelector('.number').style.width =
+                '30rem';
 
         }
 
@@ -48,7 +57,7 @@ document.querySelector('.check').addEventListener
                     .textContent = 0;
             }
 
-
+            // when guess is tooo low
 
         } else if (guess < secretNumber) {
             if (score > 1) {
@@ -64,14 +73,12 @@ document.querySelector('.check').addEventListener
                     .textContent = 0;
             }
 
-            // document.querySelector('.message')
-            //     .textContent = 'Yo! Low low low';
-            // score--;
-            // document.querySelector('.score')
-            //     .textContent = score;
+
         }
 
     });
+
+
 
 
 
